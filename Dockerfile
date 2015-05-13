@@ -1,8 +1,7 @@
-FROM debian:jessie
+FROM alpine
 MAINTAINER Andrew Pennebaker <andrew.pennebaker@gmail.com>
 
-RUN apt-get update
-RUN apt-get install -y nsd openssl
+RUN apk add --update nsd openssl
 RUN mkdir -m 0775 -p /var/run/nsd3 && \
 		chown -R nsd:nsd /var/run/nsd3
 
