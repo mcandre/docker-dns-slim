@@ -15,9 +15,19 @@ docker-dns-slim is a container for a DNS server, made smaller with a few techniq
 
 ```
 $ make
-docker exec 086b01655b649d1a10da00b8cce55b8e495c61602322caf0b413ac246fc38c78 nsd-checkconf /etc/nsd3/nsd.conf
-dig @$(boot2docker ip) www.google.com +short
-dig @$(boot2docker ip) www.sneaky.net +short
+docker exec 929928dcaae681eb647968b1b7f76f1dc4d15b27ea7960035226313b5cda5d47 nsd-checkconf /etc/nsd3/nsd.conf
+dig @$(boot2docker ip) www.google.com +trace
+
+; <<>> DiG 9.8.3-P1 <<>> @192.168.59.103 www.google.com +trace
+; (1 server found)
+;; global options: +cmd
+;; Received 17 bytes from 192.168.59.103#53(192.168.59.103) in 3 ms
+
+dig @$(boot2docker ip) www.sneaky.net +noall +authority
+
+; <<>> DiG 9.8.3-P1 <<>> @192.168.59.103 www.sneaky.net +noall +authority
+; (1 server found)
+;; global options: +cmd
 dig @$(boot2docker ip) -x 3.141.59.26 +noall +authority
 
 ; <<>> DiG 9.8.3-P1 <<>> @192.168.59.103 -x 3.141.59.26 +noall +authority
