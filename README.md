@@ -16,19 +16,19 @@ docker-dns-slim is a container for a DNS server, made smaller with a few techniq
 ```
 $ make
 docker exec 929928dcaae681eb647968b1b7f76f1dc4d15b27ea7960035226313b5cda5d47 nsd-checkconf /etc/nsd3/nsd.conf
-dig @$(boot2docker ip) www.google.com +trace
+dig @$(docker-machine ip default) www.google.com +trace
 
 ; <<>> DiG 9.8.3-P1 <<>> @192.168.59.103 www.google.com +trace
 ; (1 server found)
 ;; global options: +cmd
 ;; Received 17 bytes from 192.168.59.103#53(192.168.59.103) in 3 ms
 
-dig @$(boot2docker ip) www.sneaky.net +noall +authority
+dig @$(docker-machine ip default) www.sneaky.net +noall +authority
 
 ; <<>> DiG 9.8.3-P1 <<>> @192.168.59.103 www.sneaky.net +noall +authority
 ; (1 server found)
 ;; global options: +cmd
-dig @$(boot2docker ip) -x 3.141.59.26 +noall +authority
+dig @$(docker-machine ip default) -x 3.141.59.26 +noall +authority
 
 ; <<>> DiG 9.8.3-P1 <<>> @192.168.59.103 -x 3.141.59.26 +noall +authority
 ; (1 server found)
@@ -65,8 +65,7 @@ $ sudo yum install docker-io bind-utils
 ## non-Linux
 
 * [VirtualBox](https://www.virtualbox.org/)
-* [Vagrant](https://www.vagrantup.com/)
-* [boot2docker](http://boot2docker.io/)
+* [Docker Toolbox](https://www.docker.com/toolbox)
 
 ### Mac OS X
 
@@ -75,8 +74,7 @@ $ sudo yum install docker-io bind-utils
 * [brew-cask](http://caskroom.io/)
 
 ```
-$ brew cask install virtualbox vagrant
-$ brew install boot2docker
+$ brew cask install dockertoolbox
 ```
 
 ### Windows
@@ -84,5 +82,7 @@ $ brew install boot2docker
 * [Chocolatey](https://chocolatey.org/)
 
 ```
-> chocolatey install docker bind-toolsonly make
+> chocolatey install virtualbox make
 ```
+
+* [DockerToolbox-1.8.2c.exe](https://github.com/docker/toolbox/releases/download/v1.8.2c/DockerToolbox-1.8.2c.exe)
